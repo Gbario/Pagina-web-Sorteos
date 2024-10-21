@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App sorteo UnderCode 2</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="index.css">
+    <script src="index.js"></script>
+
+</head>
+
+<body>
+    <div class="container-principal" id="container-principal">
+    <header class="titulo">
+        <img style="width: 200px;" src="./Img/logo1.png" >
+        
+       
+    </header>
+
+    <div id="seccion-nombre" class="container-secundario">
+        <h1 class="titulo" id="titulo"></h1>
+        <form>
+            
+            <input class="input" type="text" id="nombre-evento" style="padding-top: 5px; padding-bottom: 5px;" placeholder="Nombre del evento">
+        </form>
+        <h3>Cantidad Ganadores</h3>  
+        <select class="select" name="cantidadGanadores" style="margin: 10px;" id="cantidadGanadores" onchange="menuGanadores()">
+            <option value="0"></option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>   
+        <div id="contenedorPremios">
+        
+    </div>
+        <button class="boton" id="botonCrearEvento" onclick="crearEvento()">Crear Evento</button>
+    </div>
+
+    
+        
+
+
+    <div id="qr" class="container-secundario">
+        <button class="boton">Abrir QR</button>
+        <div style="display: none;">
+            <div>
+                <h3>Escanea el QR para participar del evento de hoy</h3>
+                
+                <div></div> <!-- Contenedor para el QR -->
+                <button class="boton">Cerrar</button>
+            </div>
+        </div>
+    </div>
+
+    
+
+    <div id="lista" class="container-secundario">
+        <h3>Evento</h3>
+        <h4>Lista de Participantes</h4>
+        <ul class="tabla" id="lista-participantes">
+            <li>Juan Perez</li>
+            <li>Carlos Gimenez</li>
+            <li>Jorge Lopez</li>
+        </ul> 
+        
+    </div>
+
+    
+
+    <div id="seccion-participantes" class="container-secundario">    
+        <h3>Registro de Participantes Manual</h3>
+        <input class="input" type="text" id="nombre-participante" placeholder="Nombre y Apellido">
+        <input class="input" type="text" id="dni" placeholder="DNI">
+        <button class="boton" id="btn-agregar-participante">Agregar Participante</button>
+    </div>
+
+    <br>
+
+    <div id="btn-sorteo" class="">
+        <button class="boton">Realizar Sorteo</button>
+    </div>
+</div>
+    <footer>
+        <p>&copy; 2024 SorteApp. Todos los derechos reservados.</p>
+    </footer>
+
+
+</body>
+</html>
