@@ -13,19 +13,19 @@
 
 <body>
     <div class="container-principal" id="container-principal">
-    <header class="titulo">
+    <header class="titulo"> 
         <img style="width: 200px;" src="./Img/logo1.png" >
         
        
     </header>
 
     <div id="seccion-nombre" class="container-secundario">
-        <h1 class="titulo" id="titulo"></h1>
+        <h1 class="titulo" style="color: gray;" id="titulo">Crear sorteo</h1>
         <form>
             
             <input class="input" type="text" id="nombre-evento" style="padding-top: 5px; padding-bottom: 5px;" placeholder="Nombre del evento">
         </form>
-        <h3>Cantidad Ganadores</h3>  
+        <h3 class="titulosSecundarios">Premios</h3>
         <select class="select" name="cantidadGanadores" style="margin: 10px;" id="cantidadGanadores" onchange="menuGanadores()">
             <option value="0"></option>
             <option value="1">1</option>
@@ -45,7 +45,7 @@
 
 
     <div id="qr" class="container-secundario">
-        <button class="boton">Abrir QR</button>
+        <button class="boton" id="botonCrearQR" disabled onclick="crearQR()">Abrir QR</button>
         <div style="display: none;">
             <div>
                 <h3>Escanea el QR para participar del evento de hoy</h3>
@@ -56,32 +56,36 @@
         </div>
     </div>
 
-    
+    <div id="seccion-participantes" class="container-secundario">    
+        <h3 class="titulosSecundarios">Registrar participante</h3>
+        <input class="input" type="text" id="nombreParticipante" placeholder="Nombre y Apellido" disabled>
+        <input class="input" type="text" id="dniParticipante" placeholder="DNI" disabled>
+        <button class="boton" id="botonAgregarParticipante" disabled onclick="agregarParticipante()">Agregar Participante</button>
+    </div>
 
-    <div id="lista" class="container-secundario">
-        <h3>Evento</h3>
-        <h4>Lista de Participantes</h4>
-        <ul class="tabla" id="lista-participantes">
-            <li>Juan Perez</li>
-            <li>Carlos Gimenez</li>
-            <li>Jorge Lopez</li>
+    <div class="container-secundario">
+        <h4 class="titulosSecundarios">Lista de Participantes</h4>
+        <ul class="lista" id="listaParticipantes">
         </ul> 
         
     </div>
 
-    
 
-    <div id="seccion-participantes" class="container-secundario">    
-        <h3>Registro de Participantes Manual</h3>
-        <input class="input" type="text" id="nombre-participante" placeholder="Nombre y Apellido">
-        <input class="input" type="text" id="dni" placeholder="DNI">
-        <button class="boton" id="btn-agregar-participante">Agregar Participante</button>
+    <div class="cuadroConfirmacion" id="cuadroConfirmacion"> <!--Ventana de confirmación para eliminar el evento-->
+    <div class="cuadroInterno" >
+        <strong>Esta seguro que desea eliminar el evento?</strong>
+        <p>Al aceptar se eliminarán los premios y datos de los participantes</p>
+    
+        <button class="botonEliminar" onclick="eliminarEvento()">Eliminar evento</button>
+        <button class="boton" onclick="ocultarCuadroConfirmacionEliminarEvento()">Cancelar</button>
     </div>
+    </div>
+    
 
     <br>
 
-    <div id="btn-sorteo" class="">
-        <button class="boton">Realizar Sorteo</button>
+    <div  class="">
+        <button class="boton" id="botonRealizarSorteo" disabled>Realizar Sorteo</button>
     </div>
 </div>
     <footer>
