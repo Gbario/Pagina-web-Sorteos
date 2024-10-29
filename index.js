@@ -44,9 +44,8 @@ function menuGanadores() {
 function agregarParticipante(){
 nombreParticipante = document.getElementById("nombreParticipante");
 dniParticipante = document.getElementById("dniParticipante");
-
+listaParticipantes  = document.getElementById("listaParticipantes");
     if(nombreParticipante.value !== "" && dniParticipante.value !== ""){
-        listaParticipantes  = document.getElementById("listaParticipantes");
         var nuevoParticipante = document.createElement("li");
         nuevoParticipante.innerHTML = nombreParticipante.value + "  " + dniParticipante.value + "      " + `<button class="botonEliminarParticipante" onClick="eliminarParticipante(this)"> x </button>`;
         listaParticipantes.appendChild(nuevoParticipante);
@@ -158,6 +157,7 @@ deshabilitarInput(botonCrearQR);
 deshabilitarInput(botonRealizarSorteo);
 deshabilitarInput(nombreParticipante);
 deshabilitarInput(dniParticipante);
-listaParticipantes.innerHTML = ("");
-ocultarCuadroConfirmacionEliminarEvento()
+document.getElementById("listaParticipantes").innerHTML = ("");
+
+ocultarCuadroConfirmacionEliminarEvento();
 }
