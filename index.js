@@ -28,11 +28,11 @@ function menuGanadores() {
         inputPremios.innerHTML = `
         <div>
             <label>Premio ${i}</label>
-            <input class="premios" id="premioLista">           
+            <input class="premios" style="font-family: 'Courier New', Courier, monospace"  id="premioLista">           
         </div>
         <div>
             <label>Patrocinador: </label>
-            <input class="patrocinadores" type="text" id="patrocinadorLista">      
+            <input class="patrocinadores" style="font-family: 'Courier New', Courier, monospace"  type="text" id="patrocinadorLista">      
             <br><br>
         </div>
         `;
