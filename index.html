@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="index.css">
     <script src="index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.0/build/qrcode.min.js"></script>
 
 </head>
 
@@ -45,16 +46,16 @@
 
 
     <div id="qr" class="container-secundario">
-        <button class="boton" id="botonCrearQR" disabled onclick="crearQR()">Abrir QR</button>
-        <div style="display: none;">
+        <button class="boton" id="botonCrearQR" disabled onclick="mostrarQR()">Abrir QR</button>
+        <div>
             <div>
-                <h3>Escanea el QR para participar del evento de hoy</h3>
-                
-                <div></div> <!-- Contenedor para el QR -->
-                <button class="boton">Cerrar</button>
+                <div style="display: flex; flex-direction: column;" id="qrCode"></div> <!-- Contenedor para el QR -->
+                <div id="botonesQr" style="display: flex; justify-content: center;"></div>
             </div>
         </div>
     </div>
+
+    
 
     <div id="seccion-participantes" class="container-secundario">    
         <h3 class="titulosSecundarios">Registrar participante</h3>
@@ -83,7 +84,7 @@
     
 
     <br>
-
+    <!-- Agregar funcion para realizar el sorteo -->
     <div  class="">
         <button class="boton" id="botonRealizarSorteo" disabled>Realizar Sorteo</button>
     </div>

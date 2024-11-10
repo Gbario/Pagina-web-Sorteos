@@ -69,7 +69,8 @@ function habilitarInput(input){
     input.disabled = false;
 }
 
-function crearEvento(){
+function crearEvento(){ 
+    /* agregar funcion para crear html del formulario de inscripcion al que dirige el qr y que se borre al finalizar el sorteo */
     nombreEvento = document.getElementById("nombre-evento").value;
     selectGanadores = document.getElementById("cantidadGanadores");
     if(nombreEvento === ""){
@@ -124,7 +125,35 @@ function crearEvento(){
     
 }
  
-function crearQR(){
+function mostrarQR(){
+     /* agregar opcion para descargar el qr y para compartir el link del formulario de inscripcion */
+    QRCode.toDataURL('http://127.0.0.1:5500/Client/formulario.html', {
+        errorCorrectionLevel: 'H',
+        type: 'image/png',
+        width: 256
+    }, function (err, url) {
+        if (err) {
+            console.error('Error al generar el QR:', err);
+            return;
+        }
+
+        document.getElementById('qrCode').innerHTML = '<img src="' + url + '" alt="QR Code">';
+        document.getElementById('botonesQr').innerHTML = '<button class="botonEliminar" onclick="cerrarQr()">Cerrar</button> <button class="boton" onclick="compartirLink()">Compartir Link</button> <button class="boton" onclick="descargarQr()"><img src="./img/iconoDescarga.png" alt="Descargar" class="botonDescargarQr"></button>';
+        deshabilitarInput(botonCrearQR);
+    });
+}
+
+function cerrarQr(){
+    document.getElementById('qrCode').innerHTML= '';
+    document.getElementById('botonesQr').innerHTML= '';
+    habilitarInput(botonCrearQR);
+}
+
+function compartirLink(){
+
+}
+
+function descargarQr(){
 
 }
 
@@ -158,6 +187,6 @@ deshabilitarInput(botonRealizarSorteo);
 deshabilitarInput(nombreParticipante);
 deshabilitarInput(dniParticipante);
 document.getElementById("listaParticipantes").innerHTML = ("");
-
+cerrarQr();
 ocultarCuadroConfirmacionEliminarEvento();
 }
