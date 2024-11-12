@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="index.css">
     <script src="index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.4.4/build/qrcode.min.js"></script>
 
 </head>
 
@@ -26,7 +27,8 @@
             <input class="input" type="text" id="nombre-evento" style="padding-top: 5px; padding-bottom: 5px;" placeholder="Nombre del evento">
         </form>
         <h3 class="titulosSecundarios">Premios</h3>
-        <select class="select" name="cantidadGanadores" style="margin: 10px;" id="cantidadGanadores" onchange="menuGanadores()">
+        <ul class="lista" id= "listaPremios" hidden></ul>
+        <select class="select" name="cantidadGanadores" style="margin: 10px;" id="cantidadGanadores" onchange="menuPremios()">
             <option value="0"></option>
             <option value="1">1</option>
             <option value="2">2</option>
@@ -38,6 +40,7 @@
         
     </div>
         <button class="boton" id="botonCrearEvento" onclick="crearEvento()">Crear Evento</button>
+        <button class="botonEliminar" disabled id="botonEliminarEvento" onclick="cuadroConfirmacionEliminarEvento()">Eliminar Evento</button>
     </div>
 
     
@@ -45,13 +48,11 @@
 
 
     <div id="qr" class="container-secundario">
-        <button class="boton" id="botonCrearQR" disabled onclick="crearQR()">Abrir QR</button>
-        <div style="display: none;">
+        <button class="boton" id="botonCrearQR" disabled onclick="mostrarQR()">Abrir QR</button>
+        <div>
             <div>
-                <h3>Escanea el QR para participar del evento de hoy</h3>
-                
-                <div></div> <!-- Contenedor para el QR -->
-                <button class="boton">Cerrar</button>
+                <div style="display: flex; flex-direction: column;" id="qrCode"></div> <!-- Contenedor para el QR -->
+                <div id="botonesQr" style="display: flex; justify-content: center;"></div>
             </div>
         </div>
     </div>
@@ -59,12 +60,15 @@
     <div id="seccion-participantes" class="container-secundario">    
         <h3 class="titulosSecundarios">Registrar participante</h3>
         <input class="input" type="text" id="nombreParticipante" placeholder="Nombre y Apellido" disabled>
-        <input class="input" type="text" id="dniParticipante" placeholder="DNI" disabled>
-        <button class="boton" id="botonAgregarParticipante" disabled onclick="agregarParticipante()">Agregar Participante</button>
+        <input class="input" type="number" id="dniParticipante" placeholder="DNI" disabled>
+        <button class="boton" id="botonAgregarParticipante" disabled onclick="agregarParticipanteManual()">Agregar Participante</button>
     </div>
 
     <div class="container-secundario">
+        <div style="display: flex; align-items: center;">
         <h4 class="titulosSecundarios">Lista de Participantes</h4>
+        <button  class="botonRecargar" onclick="mostrarListaParticipantes()"><img src="./img/logoRecargar.png" alt="logo recarga" style="width: 20px;"></button>
+        </div>
         <ul class="lista" id="listaParticipantes">
         </ul> 
         
@@ -81,11 +85,25 @@
     </div>
     </div>
     
+    <div class="cuadroConfirmacion" id="cuadroGanadores"> <!--Ventana de ganadores del evento-->
+        <div class="cuadroInterno" >
+            <h2>Realizar Sorteo</h2>
+            <div id="contenedorGanadores">
+                
+            </div>
+            <div><button class="boton" onclick="elegirGanador()" id="botonSortear" >SORTEAR</button></div>
+            <div><button class="boton" id="botonDescargarResultados" hidden onclick="">Descargar resultados</button></div>
+            <div><button class="botonEliminar" id="botonFinalizarEvento" onclick="eliminarEvento()" hidden >Finalizar Evento</button>
+            <button class="botonEliminar" id="botonCancelar" onclick="cerrarCuadroRealizarSorteo()">Cancelar</button>
+        </div>
+            
+        </div>
+        </div>
 
     <br>
 
-    <div  class="">
-        <button class="boton" id="botonRealizarSorteo" disabled>Realizar Sorteo</button>
+    <div  id="contenedorRealizarSorteo" class="">
+        <button class="boton" id="botonRealizarSorteo" onclick="cuadroRealizarSorteo()" disabled>Realizar Sorteo</button>
     </div>
 </div>
     <footer>

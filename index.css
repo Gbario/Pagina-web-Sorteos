@@ -32,6 +32,16 @@ body {
 
 
  }
+
+ .container-formulario{
+display: flex;
+flex-direction: row;
+width: 80%;
+align-items: center;
+padding: 10px;
+ }
+
+
  .titulo{
 
   display: flex;
@@ -80,6 +90,11 @@ body {
   color: rgb(255, 255, 255);
   transition: .15s;
  }
+
+ .botonEliminar:disabled:hover{
+  background-color: rgb(233, 233, 233);
+  color: rgb(171,171,171);
+ }
  
  .botonEliminar:active{
   background-color: rgb(146, 12, 12);
@@ -92,7 +107,8 @@ body {
   font-family: 'Courier New', Courier, monospace;
   display: flex;
   margin: 5px;
-  width: 97%;
+  width: 95%;
+  align-self: center;
  }
 
  .select{
@@ -104,15 +120,16 @@ body {
 
 .lista{
   overflow-y: scroll;
- 
+ align-self: center;
   border: black solid 1px;
-  padding-left: 25px;
-  width: 95%;
+ 
+  width: 90%;
   padding-top: 5px;
   padding-bottom: 5px;
-  max-height: 100px;
+  max-height: 150px;
 
 }
+
 
 
 .titulosSecundarios{
@@ -120,10 +137,13 @@ body {
 }
 
 .botonEliminarParticipante{
+
+  justify-content: center;
   background-color: lightgray;
   border: lightgray;
   border-radius: 2px;
-  padding: 2px;
+  width: 20px;
+
   
 }
 .botonEliminarParticipante:hover{
@@ -153,4 +173,37 @@ top: 0;
   width: 40%;
   background-color: rgb(255, 255, 255); 
   z-index: 1000;
+}
+
+.botonRecargar{
+  background-color: rgb(241, 241, 241);
+  border: transparent;
+  height: 40px;
+  width: 40px;
+  margin-left: 10px;
+  border-radius: 5px;
+}
+.botonRecargar:hover{
+  background-color: lightgray;
+  transition: 0.3s;
+}
+
+.botonRecargar:active{
+  background-color:  rgb(68, 128, 54);
+  transition: 0.1s;
+}
+
+.botonDescargarQr{
+  width: 20px;
+  height: 20px;
+  padding-left: 1px;
+  padding-top: 1px;
+}
+
+.contenedorGanador{
+ border: 1px black solid;
+ border-radius: 5px;
+ margin: 10px;
+ padding: 5px;
+ box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.664);
 }
