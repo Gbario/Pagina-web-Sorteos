@@ -333,7 +333,7 @@ deshabilitarInput(dniParticipante);
 cerrarQr();
 deshabilitarInput(botonCrearQR);
 document.getElementById("listaParticipantes").innerHTML = ("");
-
+cerrarQr();
 ocultarCuadroConfirmacionEliminarEvento();
 
 
